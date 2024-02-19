@@ -13,6 +13,7 @@ export function fahrenheitToCelius(temperature: number): number {
  */
 export function add3(first: number, second: number, third: number): number {
     const arr: number[] = [first, second, third];
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
     const initial: number = 0;
     const sum: number = arr.reduce(
         (total: number, currentVal: number) =>
