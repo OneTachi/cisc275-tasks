@@ -44,7 +44,7 @@ export function stringsToIntegers(numbers: string[]): number[] {
 export const removeDollars = (amounts: string[]): number[] => {
     const conversion: number[] = [...amounts].map((amount: string): number => {
         let formatted_amount: string = amount;
-        if (amount.charAt(0) === "?") {
+        if (formatted_amount.charAt(0) === "$") {
             formatted_amount = amount.slice(1);
         }
         return Number.isNaN(parseInt(formatted_amount))
