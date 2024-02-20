@@ -131,5 +131,17 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
+    let injection: number[] = [...values];
+    const negative_index: number = injection.findIndex(
+        (num: number) => num < 0
+    );
+    if (negative_index === -1) {
+        const sum: number = injection.reduce(
+            (total: number, num: number) => total + num
+        );
+        injection = [...injection, sum];
+        return injection;
+    }
+
     return [];
 }
