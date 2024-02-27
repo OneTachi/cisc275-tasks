@@ -63,7 +63,7 @@ export function isValid(question: Question, answer: string): boolean {
 export function toShortForm(question: Question): string {
     const id: string = question.id.toString();
     const short_question: string = question.name.slice(0, 10);
-    const combined: string = id + ":" + short_question;
+    const combined: string = id + ": " + short_question;
     return combined;
 }
 
