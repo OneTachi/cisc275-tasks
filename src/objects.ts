@@ -85,7 +85,7 @@ export function toShortForm(question: Question): string {
  * Check the unit tests for more examples of what this looks like!
  */
 export function toMarkdown(question: Question): string {
-    const name_string: string = question.name + "\n" + question.body + "\n";
+    const name_string: string = "# " + question.name + "\n" + question.body;
     const option_string: string = [...question.options].reduce(
         (prev: string, option: string) => prev + "\n- " + option,
         ""
