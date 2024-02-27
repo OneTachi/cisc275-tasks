@@ -99,7 +99,7 @@ export function toMarkdown(question: Question): string {
  * `newName`.
  */
 export function renameQuestion(question: Question, newName: string): Question {
-    return { ...question, name: newName };
+    return { ...question, name: newName, options: [...question.options] };
 }
 
 /**
@@ -108,7 +108,11 @@ export function renameQuestion(question: Question, newName: string): Question {
  * published; if it was published, now it should be not published.
  */
 export function publishQuestion(question: Question): Question {
-    return { ...question, published: !question.published };
+    return {
+        ...question,
+        published: !question.published,
+        options: [...question.options]
+    };
 }
 
 /**
@@ -122,7 +126,8 @@ export function duplicateQuestion(id: number, oldQuestion: Question): Question {
         ...oldQuestion,
         id: id,
         name: "Copy of " + oldQuestion.name,
-        published: false
+        published: false,
+        options: [...oldQuestion.options]
     };
 }
 
@@ -134,7 +139,7 @@ export function duplicateQuestion(id: number, oldQuestion: Question): Question {
  * Check out the subsection about "Nested Fields" for more information.
  */
 export function addOption(question: Question, newOption: string): Question {
-    return question;
+    return { ...question, options: [...question.options, newOption] };
 }
 
 /**
