@@ -130,7 +130,16 @@ export function toCSV(questions: Question[]): string {
  * making the `text` an empty string, and using false for both `submitted` and `correct`.
  */
 export function makeAnswers(questions: Question[]): Answer[] {
-    return [];
+    return [...questions].map(
+        (question: Question): Answer => ({
+            // eslint-disable-next-line prettier/prettier
+            questionId: question.id,
+            // eslint-disable-next-line prettier/prettier
+            text: "",
+            submitted: false,
+            correct: false
+        })
+    );
 }
 
 /***
