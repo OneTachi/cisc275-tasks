@@ -241,7 +241,23 @@ export function editOption(
     targetOptionIndex: number,
     newOption: string
 ): Question[] {
-    return [];
+    return [...questions].map((question: Question): Question => {
+        if (question.id === targetId) {
+            if (targetOptionIndex === -1) {
+                return {
+                    ...question,
+                    options: [...question.options, newOption]
+                };
+            }
+            const added_option = [...question.options];
+            added_option.splice(targetOptionIndex, 1, newOption);
+            return {
+                ...question,
+                options: added_option
+            };
+        }
+        return question;
+    });
 }
 
 /***
