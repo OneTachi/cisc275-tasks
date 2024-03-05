@@ -15,6 +15,7 @@ function ShoveBoxButton({
 
 function MoveableBox({
     position,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     setPosition
 }: {
     position: number;
