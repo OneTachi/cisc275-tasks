@@ -3,7 +3,8 @@ import { Button, Form } from "react-bootstrap";
 
 export function GiveAttempts(): JSX.Element {
     const [attempts, setAttempts] = useState<number>(3);
-    const [requestAttempts, setRequestAttempts] = useState<number>(3);
+    const [requestAttempts, setRequestAttempts] = useState<string>("");
+    const add: number = parseInt(requestAttempts) || 0;
     return (
         <div>
             <h3>Give Attempts</h3>
@@ -12,12 +13,9 @@ export function GiveAttempts(): JSX.Element {
                 <Form.Control
                     type="number"
                     value={requestAttempts}
-                    onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                        setRequestAttempts(
-                            parseInt(event.target.value) || requestAttempts
-                        )
-                    }
-                    placeholder="Enter Wanted Requests"
+                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                        setRequestAttempts(event.target.value);
+                    }}
                 />
             </Form.Group>
             <Button
@@ -27,9 +25,10 @@ export function GiveAttempts(): JSX.Element {
                 use
             </Button>
             <Button
-                onClick={() =>
-                    setAttempts(Math.min(attempts + 1, requestAttempts))
-                }
+                onClick={() => {
+                    setAttempts(attempts + add);
+                    setRequestAttempts("");
+                }}
             >
                 gain
             </Button>
