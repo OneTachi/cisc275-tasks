@@ -18,20 +18,21 @@ export function ChangeColor(): JSX.Element {
             <h3>Change Color</h3>
             {colors.map((color: string): JSX.Element => {
                 return (
-                    <Form.Check
-                        inline
-                        label={color}
-                        color="red"
-                        style={{ backgroundColor: color }}
-                        key={color}
-                        type="radio"
-                        name="colors"
-                        checked={chosen === color}
-                        value={color}
-                        onChange={(
-                            event: React.ChangeEvent<HTMLInputElement>
-                        ) => setChosen(event.target.value)}
-                    />
+                    <span key={color}>
+                        <Form.Check
+                            inline
+                            label={color}
+                            style={{ backgroundColor: color }}
+                            key={color}
+                            type="radio"
+                            name="colors"
+                            checked={chosen === color}
+                            value={color}
+                            onChange={(
+                                event: React.ChangeEvent<HTMLInputElement>
+                            ) => setChosen(event.target.value)}
+                        />
+                    </span>
                 );
             })}
             <p>You have chosen: </p>
